@@ -1,3 +1,9 @@
-<img src='images/emberjs.png'>
-<img src='images/nwjs.png'>
+
+<ul>
+{{#each page in model.pages}}
+  <li>{{#link-to "show" page.id}}{{page.title}}{{/link-to}}</li>
+{{/each}}
+</ul>
+
+
 {{outlet}}

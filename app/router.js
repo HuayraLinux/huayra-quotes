@@ -6,5 +6,7 @@ var Router = Ember.Router.extend({
 });
 
 export default Router.map(function() {
-  this.route('tips');
+  this.resource('index', {path: "/"}, function() {
+    this.resource('show', {path: '/show/:id'});
+  });
 });
