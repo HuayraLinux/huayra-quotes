@@ -1,0 +1,9 @@
+[Desktop Entry]
+Version=1.0
+Name=huayra-quotes
+Comment=Comment
+Exec=/usr/bin/huayra-quotes
+Terminal=false
+Type=Application
+Icon=huayra-quotes
+Categories=GNOME;GTK;Huayra;Network;
