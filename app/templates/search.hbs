@@ -1,0 +1,14 @@
+<h2>Buscar</h2>
+
+<div>
+  {{input type="text" action="search" value=q}}
+
+  {{#if canSearch}}
+    <button class='btn btn-success' {{action "search"}}>Buscar</button>
+  {{else}}
+    <button class='btn btn-success' disabled>Buscar</button>
+  {{/if}}
+
+</div>
+
+{{outlet}}
