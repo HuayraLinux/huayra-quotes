@@ -3,7 +3,7 @@ var gui = require('nw.gui');
 var path = require('path');
 
 var Datastore = require('nedb');
-var filename = path.join('data', 'db.nedb');
+var filename = path.join('./', 'data', 'db.nedb');
 var db = new Datastore({filename: filename, autoload: true});
 
 window.db = db;
