@@ -6,7 +6,7 @@
     "title": "huayra-quotes",
     "width": 800,
     "height": 500,
-    "toolbar": true,
+    "toolbar": false,
     "position": "center"
   }
 }
