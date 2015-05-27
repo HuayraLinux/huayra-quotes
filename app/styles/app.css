@@ -5,3 +5,8 @@ html, body {
 a.active {
   font-weight: bold;
 }
+
+div.loading {
+  color: gray;
+  margin: 20px;
+}

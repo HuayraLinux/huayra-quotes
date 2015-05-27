@@ -1,4 +1,9 @@
-<h2>DETALLE</h2>
+<h1>{{model.record.title}}</h1>
 
-<p>PATH: {{model.path}}</p>
-<p>DATA: {{quote-render model.data}}</p>
+<hr/>
+
+{{quote-render model.data}}
+
+<hr/>
+
+{{hq-category category=model.record.category}}

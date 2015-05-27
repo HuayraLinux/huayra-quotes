@@ -6,10 +6,15 @@ var Router = Ember.Router.extend({
 });
 
 export default Router.map(function() {
-  this.resource('index', {path: "/"}, function() {
-    this.resource('show', {path: '/show/:id'});
-  });
+
+  this.resource('index', {path: "/"}, function() {});
+  this.resource('show', {path: '/show/:id'});
+
   this.resource('search', {path: "/search"}, function() {
     this.resource('result', {path: ":q"});
   });
+
+  this.route('category', {path: "/category/:id"});
+  this.route('categories');
+  
 });

@@ -33,4 +33,31 @@ export default Ember.Service.extend({
     });
   },
 
+  getById: function(id) {
+
+    return new Ember.RSVP.Promise((resolve) => {
+      this.get('db').find({id: id}, function(err, data) {
+        if (data.length > 0) {
+          resolve(data[0]);
+        }
+      });
+    });
+
+  },
+
+  getByCategory: function(category) {
+    return new Ember.RSVP.Promise((resolve) => {
+      this.get('db').find({category: category}, function(err, data) {
+        var array = Ember.A();
+
+        data.forEach((d) => {
+          array.pushObject(d);
+        });
+
+        resolve(array);
+      });
+    });
+  }
+
+
 });
