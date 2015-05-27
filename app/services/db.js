@@ -7,7 +7,7 @@ var fse = require('fs-extra');
 var filename = path.join('./', 'data', 'db.nedb');
 var db_path = path.join(process.env.HOME, '.huayra-quotes.nedb');
 
-fse.copyFileSync(filename, db_path);
+fse.copySync(filename, db_path);
 
 var Datastore = require('nedb');
 var db = new Datastore({filename: db_path, autoload: true});
