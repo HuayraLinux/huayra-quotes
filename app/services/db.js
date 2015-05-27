@@ -1,10 +1,16 @@
 import Ember from 'ember';
+
 var gui = require('nw.gui');
 var path = require('path');
+var fse = require('fs-extra');
+
+var filename = path.join('./', 'data', 'db.nedb');
+var db_path = path.join(process.env.HOME, '.huayra-quotes.nedb');
+
+fse.copyFileSync(filename, db_path);
 
 var Datastore = require('nedb');
-var filename = path.join('./', 'data', 'db.nedb');
-var db = new Datastore({filename: filename, autoload: true});
+var db = new Datastore({filename: db_path, autoload: true});
 
 window.db = db;
 

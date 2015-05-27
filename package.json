@@ -36,8 +36,9 @@
     "bower": "1.4.1"
   },
   "dependencies": {
-    "nedb": "^1.1.2",
     "ember-localstorage-adapter": "^0.5.2",
+    "fs-extra": "^0.18.4",
+    "nedb": "^1.1.2",
     "wiky.js": "0.0.1"
   }
 }
