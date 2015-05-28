@@ -25,3 +25,7 @@ a.hq-navigation-button {
 .navigation-container {
   width: 107px;
 }
+
+.container-fluid {
+  margin-left: 0px !important;
+}
