@@ -5,7 +5,7 @@ var path = require('path');
 var fse = require('fs-extra');
 
 var filename = path.join('./', 'data', 'db.nedb');
-var db_path = path.join(process.env.HOME, '.huayra-quotes.nedb');
+var db_path = path.join(process.env.HOME, '.huayra-quotes2.nedb');
 
 
 export default Ember.Service.extend({
@@ -13,15 +13,21 @@ export default Ember.Service.extend({
   error: "",
 
   init: function() {
+    var error = null;
 
     try {
       fse.copySync(filename, db_path);
-      var Datastore = require('nedb');
-      var db = new Datastore({filename: db_path, autoload: true});
-      this.set('db', db);
     } catch (err) {
+      error = err;
+      console.log(err);
       this.set("error", "No se puede acceder al archivo " + filename);
     }
+
+      if (!error) {
+        var Datastore = require('nedb');
+        var db = new Datastore({filename: db_path, inMemoryOnly: true, autoload: true});
+        this.set('db', db);
+      }
 
   },
 
