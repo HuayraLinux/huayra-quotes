@@ -15,5 +15,9 @@ div.loading {
 div.main-content {
   padding-left: 20px;
   padding-right: 20px;
+}
 
+a.hq-navigation-button {
+  display: inline-block;
+  border: 1px solid green;
 }

@@ -5,6 +5,14 @@ export default Ember.Route.extend({
 
   load: function() {
     this.get('db').init();
+
+    var error = this.get('db.error');
+
+    if (error) {
+      alert(error);
+      this.transitionTo('error', error);
+    }
+
   }.on('init'),
 
 });
