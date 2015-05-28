@@ -18,6 +18,10 @@ div.main-content {
 }
 
 a.hq-navigation-button {
-  display: inline-block;
+  display: inline-block !important;
   border: 1px solid green;
+}
+
+.navigation-container {
+  width: 107px;
 }

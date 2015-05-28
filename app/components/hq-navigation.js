@@ -2,5 +2,5 @@ import Ember from 'ember';
 
 export default Ember.Component.extend({
   tagName: 'li',
-  classNames: ['hq-navigation-container'],
+  classNames: ['navigation-container']
 });

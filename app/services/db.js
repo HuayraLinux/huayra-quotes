@@ -4,30 +4,22 @@ var gui = require('nw.gui');
 var path = require('path');
 var fse = require('fs-extra');
 
-var filename = path.join('./', 'data', 'db.nedb');
-var db_path = path.join(process.env.HOME, '.huayra-quotes2.nedb');
-
+var db_path = path.join('./', 'data', 'db.json');
 
 export default Ember.Service.extend({
   db: null,
+  index_collection: null,
   error: "",
 
   init: function() {
-    var error = null;
+    var loki = require('lokijs');
+    var db = new loki('data/db.json');
 
-    try {
-      fse.copySync(filename, db_path);
-    } catch (err) {
-      error = err;
-      console.log(err);
-      this.set("error", "No se puede acceder al archivo " + filename);
-    }
-
-      if (!error) {
-        var Datastore = require('nedb');
-        var db = new Datastore({filename: db_path, inMemoryOnly: true, autoload: true});
-        this.set('db', db);
-      }
+    db.loadDatabase({}, () => {
+      var index_collection = db.getCollection("index");
+      this.set('db', db);
+      this.set('index_collection', index_collection);
+    });
 
   },
 
@@ -35,16 +27,15 @@ export default Ember.Service.extend({
     return new Ember.RSVP.Promise((resolve) => {
       var regex = new RegExp(q, 'i');
 
-      this.get('db').find({title: regex}, function(err, data) {
+      var data = this.get('index_collection').find({title: {$regex: regex}});
 
-        var array = Ember.A();
+      var array = Ember.A();
 
-        data.forEach((d) => {
-          array.pushObject(d);
-        });
-
-        resolve(array);
+      data.forEach((d) => {
+        array.pushObject(d);
       });
+
+      resolve(array);
 
     });
   },
@@ -52,26 +43,26 @@ export default Ember.Service.extend({
   getById: function(id) {
 
     return new Ember.RSVP.Promise((resolve) => {
-      this.get('db').find({id: id}, function(err, data) {
-        if (data.length > 0) {
+      var data = this.get('index_collection').find({id: id});
+
+      if (data.length > 0) {
           resolve(data[0]);
-        }
-      });
+      }
+
     });
 
   },
 
   getByCategory: function(category) {
     return new Ember.RSVP.Promise((resolve) => {
-      this.get('db').find({category: category}, function(err, data) {
-        var array = Ember.A();
+      var data = this.get('index_collection').find({category: category});
+      var array = Ember.A();
 
-        data.forEach((d) => {
-          array.pushObject(d);
-        });
-
-        resolve(array);
+      data.forEach((d) => {
+        array.pushObject(d);
       });
+
+      resolve(array);
     });
   }
 
