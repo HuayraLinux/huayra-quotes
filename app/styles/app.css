@@ -3,10 +3,17 @@ html, body {
 }
 
 a.active {
-  font-weight: bold;
+  background-color: rgb(231, 231, 231) !important;
 }
 
 div.loading {
   color: gray;
   margin: 20px;
+}
+
+
+div.main-content {
+  padding-left: 20px;
+  padding-right: 20px;
+
 }

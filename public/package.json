@@ -5,8 +5,9 @@
   "window": {
     "title": "huayra-quotes",
     "width": 800,
+    "min_width": 770,
     "height": 500,
-    "toolbar": false,
+    "toolbar": true,
     "position": "center"
   }
 }
