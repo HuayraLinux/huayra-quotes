@@ -1,7 +1,7 @@
-<h1>Categoría: {{id}}</h1>
+<h1>{{model.category}}</h1>
 
 <ul>
-  {{#each model as |page index|}}
+  {{#each model.items as |page index|}}
     <li>{{#link-to "show" page.id}}{{page.title}}{{/link-to}}</li>
   {{/each}}
 </ul>

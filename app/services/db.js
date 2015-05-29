@@ -62,7 +62,7 @@ export default Ember.Service.extend({
         array.pushObject(d);
       });
 
-      resolve(array);
+      resolve({items: array, category: category});
     });
   }
 

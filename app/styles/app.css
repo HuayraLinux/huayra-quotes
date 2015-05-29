@@ -23,7 +23,7 @@ a.hq-navigation-button {
 }
 
 .navigation-container {
-  width: 107px;
+  width: 75px;
 }
 
 .container-fluid {
@@ -32,4 +32,14 @@ a.hq-navigation-button {
 
 a.hq-navigation-button-disabled {
   color: gray !important;
+}
+
+.disableSelection{
+-webkit-touch-callout: none;
+-webkit-user-select: none;
+-khtml-user-select: none;
+-moz-user-select: none;
+-ms-user-select: none;
+user-select: none;
+outline: 0;
 }
