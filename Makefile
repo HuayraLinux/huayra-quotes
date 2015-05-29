@@ -6,6 +6,7 @@ G=[01;32m
 Y=[01;33m
 B=[01;34m
 
+
 comandos:
 	@echo ""
 	@echo "${B}Comandos disponibles para ${G}huayra-quotes${N}"
