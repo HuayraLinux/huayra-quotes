@@ -1,4 +1,4 @@
-VERSION=0.1.5
+VERSION=0.1.6
 NOMBRE="huayra-quotes"
 
 N=[0m
@@ -63,7 +63,7 @@ version:
 	make build
 	@echo "Es recomendable escribir el comando que genera los tags y sube todo a github:"
 	@echo ""
-	@echo "make ver_sync"
+	@echo "make subir_version"
 
 subir_version:
 	git commit -am 'release ${VERSION}'
