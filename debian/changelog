@@ -1,3 +1,15 @@
+huayra-quotes (0.1.3) unstable; urgency=low
+
+  * actualizando paquete.
+  * Implementando la barra de navegación.
+  * arreglando manejador de errores y modularizando botones de navegacion.
+  * arreglos menores.
+  * Cambiando el motor de bases de datos por lokijs y acomodando el navegador de historial.
+  * arreglo menor de estilos.
+  * release 0.1.3
+
+ -- Hugo Ruscitti <hugoruscitti@gmail.com>  Fri, 29 May 2015 10:47:27 -0300
+
 huayra-quotes (0.1.2) unstable; urgency=low
 
   * Arreglos generales.
