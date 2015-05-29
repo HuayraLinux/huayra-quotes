@@ -29,3 +29,7 @@ a.hq-navigation-button {
 .container-fluid {
   margin-left: 0px !important;
 }
+
+a.hq-navigation-button-disabled {
+  color: gray !important;
+}

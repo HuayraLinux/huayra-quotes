@@ -1,2 +1,11 @@
-<a href="#" class='hq-navigation-button'>{{fa-icon "chevron-left"}}</a>
-<a href="#" class='hq-navigation-button'>{{fa-icon "chevron-right"}}</a>
+{{#if canBack}}
+  <a href="" class='hq-navigation-button'>{{fa-icon "chevron-left"}}</a>
+{{else}}
+  <a class='hq-navigation-button hq-navigation-button-disabled'>{{fa-icon "chevron-left"}}</a>
+{{/if}}
+
+{{#if canForward}}
+  <a href="" class='hq-navigation-button'>{{fa-icon "chevron-right"}}</a>
+{{else}}
+  <a class='hq-navigation-button hq-navigation-button-disabled'>{{fa-icon "chevron-right"}}</a>
+{{/if}}
