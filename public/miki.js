@@ -16,18 +16,16 @@ function replace_re(where, re, sub, comment){
             if(match){
                 //console.log( comment||"", match );
                 where[i] = replace_re(where[i], re, sub, comment);
-                //where[i].replace(re, sub);
             }
         }
     }
     else{
-        //console.log( comment||"", sub );
         where = where.replace(re, sub);
     }
     return where;
 }
 
-function match_re(where, re, sub, comment){
+function match_re(where, re, comment){
     var matches = [];
     if( typeof(where) !== "string" ){
         for(var i=0;i<where.length;i++){
@@ -48,6 +46,31 @@ function match_re(where, re, sub, comment){
     return matches;
 }
 
+function build_listref(where){
+    var re = /<ref><a href='(.*)'>(.*)<\/a><\/ref>/i;
+    var r = 0;
+    var ref = [];
+    var url = "";
+
+    where = replace_re(where, re, "$& _REFHERE_", re.toString());
+    for(var i=0;i<where.length;i++){
+        if( /_REFHERE_/.test(where[i]) ){
+            url = where[i].match(re)[1] || "#";
+            where[i] = where[i]
+                .replace(/_REFHERE_/, '<a href="#cite_note-n">[n]</a>'.replace(/n/g,r))
+                .replace(re, "");
+            ref.push( '<li id="#cite_note-nref"><a name="#cite_note-nref" href="{url}">[nref]</a></li>'
+                      .replace(/nref/g,r).replace("{url}", url) );
+            r++;
+        }
+    }
+
+    where = replace_re(where,
+                       /{{listaref}}/i,
+                       "<ul>"+ref.join("")+"</ul>");
+
+    return where;
+}
 
 var miki = {
     wiki: undefined,
@@ -178,6 +201,7 @@ miki.parse = function(wiki){
      * EO bold & italic
      */
 
+
     /*
      * BO references
      * <ref>
@@ -187,16 +211,12 @@ miki.parse = function(wiki){
                         "$1",
                         "<ref>abc</ref>");
 
-    miki.html = replace_re(miki.html,
-                           /<ref>(.*)<\/ref>/i,
-                           "$1",
-                           "<ref>abc</ref>");
+    // miki.html = replace_re(miki.html,
+    //                        /<ref>(.*)<\/ref>/i,
+    //                        "$&",
+    //                        "<ref>abc</ref>");
 
-    miki.html = replace_re(miki.html,
-                           /{{listaref}}/i,
-                           "___LISTAREF___",
-                           "{{listaref}}");
-
+    miki.html = build_listref(miki.html);
     /*
      * EO references
      */
@@ -223,6 +243,7 @@ miki.parse = function(wiki){
     /*
      * EO sidetable
      */
+
 }
 
 miki.as_html = function(){
