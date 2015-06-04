@@ -31,7 +31,7 @@ comandos:
 
 iniciar:
 	npm install
-	./node_modules/bower/bin/bower install
+	./node_modules/bower/bin/bower install --allow-root
 	wget https://raw.githubusercontent.com/lvm/miki.js/master/miki.js
 	mv miki.js public/
 
