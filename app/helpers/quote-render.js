@@ -4,7 +4,7 @@ export function quoteRender(params, hash) {
   var miki = require('./miki.js');
   var render_opts = {
       anchors:[
-          {re: /(<a href=\')(w:(.+))(\'>)/gi, sub:'$1http://es.wikipedia.org/wiki/$3$4'},
+          {re: /(<a href=\')(w:(.[^>]+))(\'>)/gi, sub:'$1http://es.wikipedia.org/wiki/$3$4'},
           {re: /(<a href=\')((.[^w:>]+))(\'>)/gi, sub:'$1#/show/$2$4'}
       ]
   };
