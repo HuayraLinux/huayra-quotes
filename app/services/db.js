@@ -64,7 +64,22 @@ export default Ember.Service.extend({
 
       resolve({items: array, category: category});
     });
-  }
+  },
+
+  getByCategories: function() {
+    return new Ember.RSVP.Promise((resolve) => {
+      var data = this.get('index_collection').find({});
+      var array = Ember.A();
+
+      data.forEach((d) => {
+        if (d.category && array.indexOf(d.category) === -1) {
+          array.pushObject(d.category);
+        }
+      });
+
+      resolve({categories: array});
+    });
+  },
 
 
 });
