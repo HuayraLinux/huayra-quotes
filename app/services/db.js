@@ -66,9 +66,26 @@ export default Ember.Service.extend({
     });
   },
 
-  getByCategories: function() {
+  getCategories: function() {
     return new Ember.RSVP.Promise((resolve) => {
-      var data = this.get('index_collection').find({});
+      var collection = this.get('index_collection');
+      var data = collection.find({});
+      var array = Ember.A();
+
+      data.forEach((d) => {
+        if (d.category && array.indexOf(d.category) === -1) {
+          array.pushObject(d.category);
+        }
+      });
+
+      resolve({categories: array});
+    });
+  },
+
+  getCategoriesByPage: function(pageIndex) {
+    return new Ember.RSVP.Promise((resolve) => {
+      var collection = this.get('index_collection');
+      var data = collection.where().offset(pageIndex*10).limit(10).data();
       var array = Ember.A();
 
       data.forEach((d) => {
