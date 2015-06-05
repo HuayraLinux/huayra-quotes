@@ -27,7 +27,8 @@ export default Ember.Service.extend({
     return new Ember.RSVP.Promise((resolve) => {
       var regex = new RegExp(q, 'i');
 
-      var data = this.get('index_collection').find({title: {$regex: regex}});
+      var data = this.get('index_collection').find({title: {$regex: regex},
+                                                    slug: {$regex: regex},});
 
       var array = Ember.A();
 
