@@ -40,6 +40,6 @@
     "ember-localstorage-adapter": "^0.5.2",
     "fs-extra": "^0.18.4",
     "lokijs": "^1.2.5",
-    "wiky.js": "0.0.1"
+    "slug": "^0.9.1"
   }
 }
