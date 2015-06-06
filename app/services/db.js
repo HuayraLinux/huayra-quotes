@@ -11,16 +11,20 @@ export default Ember.Service.extend({
   index_collection: null,
   error: "",
 
-  init: function() {
+  load: function() {
     var loki = require('lokijs');
     var db = new loki('data/db.json');
 
-    db.loadDatabase({}, () => {
-      var index_collection = db.getCollection("index");
-      this.set('db', db);
-      this.set('index_collection', index_collection);
+    var promise = new Ember.RSVP.Promise((resolve) => {
+      db.loadDatabase({}, () => {
+        var index_collection = db.getCollection("index");
+        this.set('db', db);
+        this.set('index_collection', index_collection);
+        resolve();
+      });
     });
 
+    return promise;
   },
 
   search: function(q) {
@@ -69,8 +73,7 @@ export default Ember.Service.extend({
 
   getCategories: function() {
     return new Ember.RSVP.Promise((resolve) => {
-      var collection = this.get('index_collection');
-      var data = collection.find({});
+      var data = this.get('index_collection').find({});
       var array = Ember.A();
 
       data.forEach((d) => {
