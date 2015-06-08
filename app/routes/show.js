@@ -14,6 +14,7 @@ export default Ember.Route.extend({
         $.get(path),
         this.get('db').getById(id),
       ]).then((results) => {
+
         var data = results[0];
         var record = results[1];
 
@@ -21,11 +22,17 @@ export default Ember.Route.extend({
           data: data,
           path: path,
           record: record,
+          redirect: record.redirect,
         });
 
       })
 
     });
 
+  },
+  afterModel: function(record, transition) {
+    if( record.redirect ){
+      this.transitionTo('show', record.redirect);
+    }
   }
 });
