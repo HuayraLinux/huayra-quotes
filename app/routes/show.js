@@ -10,23 +10,28 @@ export default Ember.Route.extend({
 
     return new Ember.RSVP.Promise((resolve) => {
 
-      Ember.RSVP.Promise.all([
-        $.get(path),
-        this.get('db').getById(id),
-      ]).then((results) => {
+      this.get('db').getById(id)
+        .then((record) => {
 
-        var data = results[0];
-        var record = results[1];
+          $.get(path)
+            .then((data) => {
+              resolve({
+                data: data,
+                path: path,
+                record: record,
+                redirect: record.redirect
+              });
+            })
+            .fail((e) => {
+              resolve({
+                data: null,
+                path: path,
+                record: record,
+                redirect: record.redirect,
+              });
+            });
 
-        resolve({
-          data: data,
-          path: path,
-          record: record,
-          redirect: record.redirect,
         });
-
-      })
-
     });
 
   },

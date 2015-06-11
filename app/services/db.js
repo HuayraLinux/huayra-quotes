@@ -46,7 +46,9 @@ export default Ember.Service.extend({
   },
 
   getById: function(id) {
-
+    /*
+      TODO, agregar reject en caso de falla.
+    */
     return new Ember.RSVP.Promise((resolve) => {
       var data = this.get('index_collection').find({id: id});
 
