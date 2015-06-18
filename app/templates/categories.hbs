@@ -1,9 +1,18 @@
 <h1>Categorías</h1>
 
+<!--
+<div>
+  <button class="btn btn-success" {{action "previousPage"}}>{{fa-icon "chevron-left"}}</button>
+  <button class="btn btn-success" {{action "nextPage"}}>{{fa-icon "chevron-right"}}</button>
+</div>
+
+<div>
+  {{page}} de {{pages}}
+</div>
+-->
 
 <ul>
-  <li>{{#link-to "category" "Programas de televisión"}}Programas de televisión{{/link-to}}</li>
-  <li>{{#link-to "category" "Militares"}}Militares{{/link-to}}</li>
-  <li>{{#link-to "category" "Escritores"}}Escritores{{/link-to}}</li>
-  <li>{{#link-to "category" "Filósofos"}}Filósofos{{/link-to}}</li>
+  {{#each model.categories as |category index|}}
+    <li>{{#link-to "category" category}}{{category}}{{/link-to}}</li>
+  {{/each}}
 </ul>

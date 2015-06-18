@@ -1,8 +1,0 @@
-dist/* usr/share/huayra-quotes/dist
-bin/huayra-quotes usr/bin/
-debian/huayra-quotes.desktop /usr/share/applications
-debian/huayra-quotes.svg /usr/share/icons/hicolor/scalable/apps
-node_modules/nedb/* /usr/share/huayra-quotes/node_modules/nedb
-node_modules/wiky.js/* /usr/share/huayra-quotes/node_modules/wiky.js
-node_modules/lokijs/* /usr/share/huayra-quotes/node_modules/lokijs
-node_modules/fs-extra/* /usr/share/huayra-quotes/node_modules/fs-extra

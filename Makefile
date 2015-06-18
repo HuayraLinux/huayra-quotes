@@ -1,4 +1,4 @@
-VERSION=0.1.9
+VERSION=0.1.14
 NOMBRE="huayra-quotes"
 
 N=[0m

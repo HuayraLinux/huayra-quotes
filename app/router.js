@@ -14,7 +14,7 @@ export default Router.map(function() {
   });
 
   this.route('category', {path: "/category/:id"});
-  this.route('categories');
+  this.route('categories', {path: "/categories/:page"});
 
   this.route('error', {path: "/error/:message"});
 });

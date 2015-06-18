@@ -11,23 +11,28 @@ export default Ember.Service.extend({
   index_collection: null,
   error: "",
 
-  init: function() {
+  load: function() {
     var loki = require('lokijs');
     var db = new loki('data/db.json');
 
-    db.loadDatabase({}, () => {
-      var index_collection = db.getCollection("index");
-      this.set('db', db);
-      this.set('index_collection', index_collection);
+    var promise = new Ember.RSVP.Promise((resolve) => {
+      db.loadDatabase({}, () => {
+        var index_collection = db.getCollection("index");
+        this.set('db', db);
+        this.set('index_collection', index_collection);
+        resolve();
+      });
     });
 
+    return promise;
   },
 
   search: function(q) {
     return new Ember.RSVP.Promise((resolve) => {
       var regex = new RegExp(q, 'i');
 
-      var data = this.get('index_collection').find({title: {$regex: regex}});
+      var data = this.get('index_collection').find({title: {$regex: regex},
+                                                    slug: {$regex: regex},});
 
       var array = Ember.A();
 
@@ -41,7 +46,9 @@ export default Ember.Service.extend({
   },
 
   getById: function(id) {
-
+    /*
+      TODO, agregar reject en caso de falla.
+    */
     return new Ember.RSVP.Promise((resolve) => {
       var data = this.get('index_collection').find({id: id});
 
@@ -64,7 +71,38 @@ export default Ember.Service.extend({
 
       resolve({items: array, category: category});
     });
-  }
+  },
+
+  getCategories: function() {
+    return new Ember.RSVP.Promise((resolve) => {
+      var data = this.get('index_collection').find({});
+      var array = Ember.A();
+
+      data.forEach((d) => {
+        if (d.category && array.indexOf(d.category) === -1) {
+          array.pushObject(d.category);
+        }
+      });
+
+      resolve({categories: array});
+    });
+  },
+
+  getCategoriesByPage: function(pageIndex) {
+    return new Ember.RSVP.Promise((resolve) => {
+      var collection = this.get('index_collection');
+      var data = collection.where().offset(pageIndex*10).limit(10).data();
+      var array = Ember.A();
+
+      data.forEach((d) => {
+        if (d.category && array.indexOf(d.category) === -1) {
+          array.pushObject(d.category);
+        }
+      });
+
+      resolve({categories: array});
+    });
+  },
 
 
 });
