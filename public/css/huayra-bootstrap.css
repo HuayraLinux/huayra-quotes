@@ -6806,3 +6806,8 @@ body {
   color: #efefef;
   border-color: transparent;
 }
+
+a.a-out{
+    background: url(../images/icon_wikipedia.jpg) top left no-repeat;
+    padding-left:20px;
+}

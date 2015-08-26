@@ -2,7 +2,11 @@
 
 <hr/>
 
-{{quote-render model.data}}
+{{#if model}}
+   {{huayra-quote-render data=model.data}}
+{{else}}
+   bla...
+{{/if}}
 
 <hr/>
 
