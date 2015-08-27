@@ -25,17 +25,14 @@ export default Ember.Component.extend({
         var safehtml = quoteRender(this.get('data'));
         this.set('datahtml', safehtml);
         Ember.run.scheduleOnce('afterRender', this, function() {
-            var anchors_out = this.$().children('.a-out');
+            var anchors_out = this.$('.a-out');
             debugger;
-            anchors_out.each(function(){
-                $(this).addClass('is-external');
-                $(this).on('click',
+            anchors_out.on('click',
                            function(e){
                                console.log(this.href);
                                require('nw.gui').Shell.openExternal( this.href );
                                e.preventDefault();
                            });
-            });
         });
     }
 });
