@@ -2,9 +2,19 @@ html, body {
   margin: 20px;
 }
 
-a.active {
-  background-color: rgb(231, 231, 231) !important;
+html {
+  margin: 0;
+  background: url("../images/fondo.png") no-repeat top right !important;
+  background-size: cover !important;
 }
+
+body {
+  background-color: transparent !important;
+}
+
+/*a.active {
+  background-color: rgb(231, 231, 231) !important;
+}*/
 
 div.loading {
   color: gray;
@@ -42,4 +52,17 @@ a.hq-navigation-button-disabled {
 -ms-user-select: none;
 user-select: none;
 outline: 0;
+}
+
+.main-title {
+  display: block;
+  height: 170px;
+  padding-bottom: 30px;
+  background: url("../images/huayra-quotes-logo.png") no-repeat top center;
+}
+
+p.main-desc {
+  width: 40%;
+  margin: 10px auto;
+  text-align: center;
 }
