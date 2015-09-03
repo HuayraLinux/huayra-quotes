@@ -26,7 +26,6 @@ export default Ember.Component.extend({
         this.set('datahtml', safehtml);
         Ember.run.scheduleOnce('afterRender', this, function() {
             var anchors_out = this.$('.a-out');
-            debugger;
             anchors_out.on('click',
                            function(e){
                                console.log(this.href);

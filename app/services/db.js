@@ -36,42 +36,38 @@ export default Ember.Service.extend({
                                                     slug: {$regex: regex},});
 
       var arr_uniq = Ember.A();
+
       data.forEach((d) => {
-        if( !d.redirect ){
-          arr_uniq.pushObj(d);
+        if (!d.redirect) {
+          arr_uniq.pushObject(d);
         }
       });
-      arr_uniq.uniq();
 
+      arr_uniq.uniq();
 
       var array = Ember.A();
 
       arr_uniq.forEach((d) => {
         var c;
-        if( d.redirect ){
+        if (d.redirect) {
           c = self.get('index_collection').find({redirect: d.redirect});
         }
-        //array.pushObject(d);
+
+        array.pushObject(d);
       });
 
-
-      // var array = Ember.A();
-
-      // data.forEach((d) => {
-      //   array.pushObject(d);
-      // });
-
-      var pete = data.map(function(d){
+      var parcial = data.map(function(d){
         var c;
-        if( d.redirect ){
+
+        if (d.redirect) {
           c = self.get('index_collection').find({redirect: d.redirect});
         }
 
         return c;
       });
 
-      console.log("PETE", pete);
-      console.log("resultados", array);
+      //console.log("PARCIAL", parcial);
+      //console.log("resultados", array);
 
       resolve(array);
 
