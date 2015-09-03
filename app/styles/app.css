@@ -66,3 +66,9 @@ p.main-desc {
   margin: 10px auto;
   text-align: center;
 }
+
+
+.main-content li {
+  display: inline-block;
+  width: 222px;
+}

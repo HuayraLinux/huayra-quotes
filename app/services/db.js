@@ -89,31 +89,53 @@ export default Ember.Service.extend({
 
   },
 
-  getByCategory: function(category) {
+  getByCategory: function(category, page, limit) {
+
     return new Ember.RSVP.Promise((resolve) => {
       var data = this.get('index_collection').find({category: category});
       var array = Ember.A();
 
       data.forEach((d) => {
-        array.pushObject(d);
+
+          array.pushObject(d);
+
       });
 
       resolve({items: array, category: category});
     });
   },
 
-  getCategories: function() {
+  getCategories: function(page, limit) {
+    var counter = 0;
+    var selected = 0;
+
     return new Ember.RSVP.Promise((resolve) => {
       var data = this.get('index_collection').find({});
       var array = Ember.A();
 
       data.forEach((d) => {
-        if (d.category && array.indexOf(d.category) === -1) {
-          array.pushObject(d.category);
+
+        if (counter > page * 30 && selected < limit) {
+
+          if (d.category && array.indexOf(d.category) === -1) {
+            array.pushObject(d.category);
+            selected += 1;
+          }
+
         }
+
+        counter += 1;
+
       });
 
       resolve({categories: array});
+    });
+  },
+
+  getPagesOfCategories() {
+    return new Ember.RSVP.Promise((resolve) => {
+      var data = this.get('index_collection').find({});
+      resolve(parseInt(data.length / 30, 10));
     });
   },
 

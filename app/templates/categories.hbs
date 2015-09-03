@@ -1,18 +1,27 @@
 <h1>Categorías</h1>
 
-<!--
 <div>
-  <button class="btn btn-success" {{action "previousPage"}}>{{fa-icon "chevron-left"}}</button>
-  <button class="btn btn-success" {{action "nextPage"}}>{{fa-icon "chevron-right"}}</button>
+  {{#if isFirstPage}}
+    <button class="btn btn-success" disabled>{{fa-icon "chevron-left"}}</button>
+  {{else}}
+    <button class="btn btn-success" {{action "previousPage"}}>{{fa-icon "chevron-left"}}</button>
+  {{/if}}
+
+
+  {{#if isLastPage}}
+    <button class="btn btn-success" disabled>{{fa-icon "chevron-right"}}</button>
+  {{else}}
+    <button class="btn btn-success" {{action "nextPage"}}>{{fa-icon "chevron-right"}}</button>
+  {{/if}}
 </div>
 
 <div>
-  {{page}} de {{pages}}
+  Página {{currentPage}} de {{pages}}.
 </div>
--->
+
 
 <ul>
-  {{#each model.categories as |category index|}}
+  {{#each model.categories.categories as |category index|}}
     <li>{{#link-to "category" category}}{{category}}{{/link-to}}</li>
   {{/each}}
 </ul>
