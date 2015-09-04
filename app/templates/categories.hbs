@@ -20,7 +20,7 @@
 </div>
 
 
-<ul>
+<ul class='categorias-container'>
   {{#each model.categories.categories as |category index|}}
     <li>{{#link-to "category" category}}{{category}}{{/link-to}}</li>
   {{/each}}

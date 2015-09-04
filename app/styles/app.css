@@ -67,8 +67,13 @@ p.main-desc {
   text-align: center;
 }
 
+.categorias-container li {
+  display: inline-block;
+  width: 222px;
+}
 
-.main-content li {
+
+.buscar-content li {
   display: inline-block;
   width: 222px;
 }

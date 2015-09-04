@@ -10,7 +10,7 @@
 
   {{else}}
 
-    <ul>
+    <ul class='buscar-content'>
       {{#each result as |page index|}}
         {{#if page.redirect}}
           <li>{{#link-to "show" page.redirect}}{{page.title}}{{/link-to}}</li>
