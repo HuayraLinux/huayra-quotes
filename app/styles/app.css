@@ -72,8 +72,11 @@ p.main-desc {
   width: 222px;
 }
 
-
 .buscar-content li {
   display: inline-block;
   width: 222px;
+}
+
+.huayra-quotes-search {
+  margin: 10px auto;
 }
