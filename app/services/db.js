@@ -1,18 +1,12 @@
 import Ember from 'ember';
 
-var gui = require('nw.gui');
-var path = require('path');
-var fse = require('fs-extra');
-
-var db_path = path.join('./', 'data', 'db.json');
-
 export default Ember.Service.extend({
   db: null,
   index_collection: null,
   error: "",
 
   load: function() {
-    var loki = require('lokijs');
+    var loki = nodeRequire('lokijs');
     var db = new loki('data/db.json');
 
     var promise = new Ember.RSVP.Promise((resolve) => {

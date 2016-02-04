@@ -1,7 +1,7 @@
 import Ember from 'ember';
+var miki = nodeRequire('./miki.js');
 
 function quoteRender(wikitext) {
-  var miki = require('./miki.js');
   var render_opts = {
       anchors:[
           {re: /(<a href=\')(w:(.[^>]+))(\'>)/gi,
@@ -29,7 +29,7 @@ export default Ember.Component.extend({
             anchors_out.on('click',
                            function(e){
                                console.log(this.href);
-                               require('nw.gui').Shell.openExternal( this.href );
+                               nodeRequire('nw.gui').Shell.openExternal( this.href );
                                e.preventDefault();
                            });
         });

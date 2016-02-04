@@ -1,5 +1,5 @@
 import Ember from 'ember';
-var slug = require('slug');
+var slug = nodeRequire('slug');
 
 export default Ember.Route.extend({
   db: Ember.inject.service(),
@@ -22,7 +22,7 @@ export default Ember.Route.extend({
                 redirect: record.redirect
               });
             })
-            .fail((e) => {
+            .fail(() => {
               resolve({
                 data: null,
                 path: path,
@@ -35,7 +35,7 @@ export default Ember.Route.extend({
     });
 
   },
-  afterModel: function(record, transition) {
+  afterModel: function(record) {
     if( record.redirect ){
       this.transitionTo('show', record.redirect);
     }
