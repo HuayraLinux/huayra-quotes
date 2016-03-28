@@ -7,7 +7,7 @@ export default Ember.Service.extend({
 
   load: function() {
     var loki = nodeRequire('lokijs');
-    var db = new loki('data/db.json');
+    var db = new loki('data/db.json'); // jshint ignore:line
 
     var promise = new Ember.RSVP.Promise((resolve) => {
       db.loadDatabase({}, () => {
@@ -50,7 +50,7 @@ export default Ember.Service.extend({
         array.pushObject(d);
       });
 
-      var parcial = data.map(function(d){
+      /*var parcial = */ data.map(function(d) {
         var c;
 
         if (d.redirect) {
@@ -83,7 +83,7 @@ export default Ember.Service.extend({
 
   },
 
-  getByCategory: function(category, page, limit) {
+  getByCategory: function(category/*, page, limit*/) {
 
     return new Ember.RSVP.Promise((resolve) => {
       var data = this.get('index_collection').find({category: category});

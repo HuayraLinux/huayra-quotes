@@ -5,11 +5,11 @@ export default Ember.Controller.extend({
   pages: 0,
 
   isFirstPage: function() {
-    return (this.get('currentPage') == 0);
+    return (this.get('currentPage') === 0);
   }.property('currentPage'),
 
   isLastPage: function() {
-    return (this.get('currentPage') == this.get('pages'));
+    return (this.get('currentPage') === this.get('pages'));
   }.property('currentPage', 'pages'),
 
 
