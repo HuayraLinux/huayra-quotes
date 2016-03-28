@@ -9,7 +9,7 @@ B=[01;34m
 
 comandos:
 	@echo ""
-	@echo "${B}Comandos disponibles para ${G}huayra-quotes${N}"
+	@echo "${B}Comandos disponibles para ${G}huayra-quotes - ${N}${Y}${VERSION}${N}"
 	@echo ""
 	@echo "  ${Y}Para desarrolladores${N}"
 	@echo ""
