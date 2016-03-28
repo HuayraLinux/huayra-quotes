@@ -25,6 +25,7 @@ comandos:
 	@echo "    ${G}version_patch${N}   Genera una nueva versión."
 	@echo "    ${G}version_minor${N}   Genera una nueva versión."
 	@echo "    ${G}subir_version${N}   Sube version generada al servidor."
+	@echo ""
 	@echo "    ${G}publicar${N}        Publica el cambio para el paquete deb."
 	@echo "    ${G}crear_deb${N}       Genera el paquete deb para huayra."
 	@echo ""
